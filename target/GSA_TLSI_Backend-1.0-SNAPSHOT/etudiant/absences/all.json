@@ -1,0 +1,34 @@
+[
+    {
+        "id": 0,
+        "code_module": "ADC",
+        "type": "TD",
+        "date_ordinaire": "12-03",
+        "heur_ordinaire": "19:59",
+        "justifiee": false
+    },
+    {
+        "id": 1,
+        "code_module": "TQL",
+        "type": "TP",
+        "date_ordinaire": "08-07",
+        "heur_ordinaire": "13:04",
+        "justifiee": true
+    },
+    {
+        "id": 2,
+        "code_module": "BDA",
+        "type": "TP",
+        "date_ordinaire": "11-03",
+        "heur_ordinaire": "01:29",
+        "justifiee": true
+    },
+    {
+        "id": 3,
+        "code_module": "CAJAVA",
+        "type": "TD",
+        "date_ordinaire": "24-08",
+        "heur_ordinaire": "19:05",
+        "justifiee": true
+    }
+]

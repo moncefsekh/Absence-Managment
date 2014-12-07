@@ -1,0 +1,23 @@
+<div class="panel panel-primary">
+	<div class="panel-heading bordered-radius">
+		<span class="glyphicon glyphicon-calendar"></span>
+		{{titreListeMini}}
+		<button class="btn btn-sm btn-primary pull-right" data-toggle="tooltip" title="Paramètres"><span class="glyphicon glyphicon-cog"></span></button>
+	</div>
+</div>
+<div class="list-group">
+	<a ng-repeat="absence in absencesSemaine" href="#" class="list-group-item" ng-class="{'panel-danger': !absence.absence.statu_justifier}">
+		<h4 class="list-group-item-heading">
+			{{absence.absence.code_midule}} {{absence.absence.type_seance}}
+			<label class="label label-primary time-label pull-right" ng-class="{'label-danger': !absence.absence.statu_justifier}" >{{absence.absence.date_absence}}</label>
+		</h4>
+		<label class="label label-primary pull-right" ng-class="{'label-danger': !absence.absence.statu_justifier}">{{absence.absence.heure_absence}}</label>
+		<p class="list-group-item-text" ng-show="{{absence.absence.statu_justifier}}">Absence justifiée</p>
+		<p class="list-group-item-text" ng-class="{'text-danger': !absence.absence.statu_justifier}"  ng-hide="{{absence.absence.statu_justifier}}">Absence non justifiée</p>
+	</a>
+</div>
+	<div class="well message bordered-bottom" ng-show="absences.length==0">
+ 			<i class="fa fa-user"></i>
+ 			<p>Aucune absence dans cette semaine</p>
+ 	</div>
+ 	

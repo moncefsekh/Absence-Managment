@@ -1,0 +1,60 @@
+
+<div class="row">
+		<div class="btn-group btn-group-justified col-xs-12"  >
+			<a 	class="btn btn-default" 
+				ng-click="selectSemestre('s1')" 
+				ng-class="{'btn-primary' : 's1' == selectedSemestreCode}" >
+				Semestre 1
+			</a>
+			<a 	class="btn btn-default" 
+				ng-click="selectSemestre('s2')" 
+				ng-class="{'btn-primary' : 's2' == selectedSemestreCode}" >
+				Semestre 2
+			</a>
+		</div>
+		<div class="btn-group btn-group-justified col-xs-12"  >
+			<a 	ng-repeat="mod in modules |filtreModules:selectedSemestreCode"
+				ng-click="selectModule(mod.module.code_module); getModule(mod.module.code_module);" 
+				class="btn btn-default"
+				ng-class="{'btn-primary' : mod.module.code_module == selectedModuleCode}">
+				{{mod.module.code_module}}
+			</a>
+		</div>
+		<!--
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 menu-sections">
+			<ul class="nav nav-pills nav-stacked">
+				<li ng-repeat="section in sections" ng-class="{active : section.code == selectedSecCode}" >
+					<!--<a href="#/etudiants/{{section.code}}">
+					<a href="" ng-click="selectSection(section.code); getSection(section.code);getAbsSection(section.code)">
+						<span class="glyphicon glyphicon-chevron-right pull-right"></span>
+						{{section.designation}}
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 menu-groupes">
+			<ul class="nav nav-pills nav-stacked">
+				<li ng-repeat="groupe in groupes" ng-show="groupe.secCode == selectedSecCode" ng-class="{active: groupe.code == selectedGroupeCode}">
+					<!--<a href="#/etudiants/{{selectedSecCode}}/{{groupe.code}}">
+					<a href="" ng-click="selectGroupe(groupe.code); getGroupe(groupe.code); getAbsGroupe(groupe.code)">
+						<span class="badge pull-right">{{groupe.nombre}}</span>
+						{{groupe.designation}}
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 menu-enseignements">
+			<ul class="nav nav-pills nav-stacked">
+				<li ng-repeat="enseignement in enseignements" ng-show="enseignement.groupeCode == selectedGroupeCode" ng-class="{active: enseignement.code == selectedEnsCode}">
+					<!--<a href="#/etudiants/{{selectedSecCode}}/{{selectedGroupeCode}}/{{enseignement.code}}">
+					<a href="" ng-click="selectEns(enseignement.code); getEns(enseignement.code); getAbsEns(enseignement.code)">
+						<span class="glyphicon glyphicon-chevron-right pull-right"></span>
+						{{enseignement.designation}}
+					</a>
+				</li>
+			</ul>
+		</div>-->
+
+		
+	</div>

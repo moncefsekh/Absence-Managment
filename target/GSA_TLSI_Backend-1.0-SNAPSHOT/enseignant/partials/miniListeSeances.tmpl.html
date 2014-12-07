@@ -1,0 +1,22 @@
+<div class="panel panel-primary">
+	<div class="panel-heading bordered-radius">
+		<span class="glyphicon glyphicon-calendar"></span>
+		{{titreListeMini}}
+		<button class="btn btn-sm btn-primary pull-right" data-toggle="tooltip" title="Paramètres"><span class="glyphicon glyphicon-cog"></span></button>
+	</div>
+</div>
+<div class="list-group">
+	<a ng-repeat="seance in seancesSemaine" href="#" class="list-group-item">
+		<h4 class="list-group-item-heading">
+			{{seance.seance.code_section}}  {{seance.seance.code_module}} {{seance.seance.type}}
+			<label class="label label-primary time-label pull-right">{{seance.seance.heure_seance}} </label>
+		</h4>
+		<label class="label label-primary pull-right">{{seance.seance.date_seance}}</label>
+		<p class="list-group-item-text">{{seance.seance.nom_groupe}}</p>
+	</a>
+
+</div>
+<div class="well message" ng-show="seancesSemaine.length==0" >
+ 		<i class="fa fa-graduation-cap"></i>
+ 		<p>Aucune seance pour le module {{selectedModuleCode}}  dans cette smaine</p>
+ </div>

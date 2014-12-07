@@ -1,0 +1,128 @@
+<div class="well well-sm">
+<div class="row">
+<div class="col-md-12">
+	<div class="btn-group">
+		<div class="btn-group" dropdown>
+			<button type="button" class="btn btn-default"><span class="fa fa-th-list"></span> Seances</button>
+			<button type="button" class="btn btn-default dropdown-toggle" >
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li>
+					<a ng-click="openSeance('Créer')"><i class="fa fa-plus-square"></i> Créer</a>
+				</li>
+				<li>
+					<a ng-click="openSeance('Modifier')" ng-show="selectedSeance"><i class="fa fa-edit" ></i>Modifier</a>
+				</li>
+				<li>
+					<a ng-click="openSeance('Changer')" ng-show="selectedSeance"><i class="fa fa-share" ></i>Changer</a>
+				</li>
+				<li>
+					<a print-div="section[liste-seances]" ><i class="fa fa-print" ></i>Imprimer</a>
+				</li>
+
+			</ul>
+		</div>
+		<div class="btn-group" dropdown>
+			<button type="button" class="btn btn-default"><span class="fa fa-th-list"></span> Modules</button>
+			<button type="button" class="btn btn-default dropdown-toggle" >
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li>
+					<a ng-click="openModule('Créer')"><i class="fa fa-plus-square"></i> Créer</a>
+				</li>
+				<li>
+					<a ng-click="openModule('Modifier')" ng-show="selectedModule"><i class="fa fa-edit" ></i>Modifier</a>
+				</li>
+				<li>
+					<a print-div="section[liste-modules]" ><i class="fa fa-print" ></i>Imprimer</a>
+				</li>
+			</ul>
+		</div>
+		<div class="btn-group" dropdown>
+			<button type="button" class="btn btn-default"><span class="fa fa-th-list"></span> Groupes</button>
+			<button type="button" class="btn btn-default dropdown-toggle" >
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li>
+					<a ng-click="openGroupe('Créer')"><i class="fa fa-plus-square"></i> Créer</a>
+				</li>
+				<li>
+					<a ng-click="openGroupe('Modifier')" ng-show="selectedGroupe" ><i class="fa fa-edit" ></i>Modifier</a>
+				</li>
+				<li>
+					<a print-div="section[liste-groupes]" ><i class="fa fa-print" ></i>Imprimer</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="btn-group" dropdown>
+			<button type="button" class="btn btn-default"><span class="fa fa-th-list"></span> Sections</button>
+			<button type="button" class="btn btn-default dropdown-toggle" >
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li>
+					<a ng-click="openSection('Créer')"><i class="fa fa-plus-square"></i> Créer</a>
+				</li>
+				<li>
+					<a ng-click="openSection('Modifier')" ng-show="selectedSection" ><i class="fa fa-edit" ></i>Modifier</a>
+				</li>
+				<li>
+					<a print-div="section[liste-sections]" ><i class="fa fa-print" ></i>Imprimer</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="btn-group pull-right">
+		<div ng-repeat="spe in specialites" class="btn-group" dropdown>
+			<a href="#/pedagogie/{{spe.specialite.code_specialite}}" type="button" class="btn btn-default" ng-class="{'btn-primary':spe.specialite.code_specialite==specialite}"><span class="fa fa-th-list"></span> {{spe.specialite.code_specialite}}</a>
+			<a type="button" class="btn btn-default dropdown-toggle" ng-class="{'btn-primary':spe.specialite.code_specialite==specialite}">
+				<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a ng-click="openSpecialite('Modifier',spe.specialite.id_Specialite)"><i class="fa fa-edit" ></i>Modifier</a>
+				</li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<button ng-click="openSpecialite('Créer')" type="button" class="btn btn-default"><span class="fa fa-plus-square"></span></button>
+		</div>
+		
+	</div>
+	<!-- modal -->
+	   <script type="text/ng-template" id="specialite.form.html">
+	        <div class="modal-header">
+	            <h4 class="modal-title">{{typeSpecialiteModal}} spécialite</h4>
+	        </div>
+	        <div class="modal-body">
+					<div class="col-md-12">
+						<p>Les champs indiqués par (*) sont obligatoires.</p>		
+						<form class="form-horizontal" role="form" name="fspe">
+							<div class="form-group">
+								<label for="" class="col-sm-4 control-label">Code spécialite (*)</label>
+								<div class="col-sm-8">
+									<input type="text" required ng-pattern='/[A-Za-z]/' ng-model="getSpecialite.code_specialite" class="form-control" id="" placeholder="GL">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-4 control-label">Nom specialite (*)</label>
+								<div class="col-sm-8">
+									<input type="text" required ng-pattern='/[A-Za-z]$/' ng-model="getSpecialite.nom_specialite" class="form-control" id="" placeholder="Génie logiciel">
+								</div>
+							</div>
+						</form>
+					</div>
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-primary" ng-disabled="fspe.$invalid" ng-click="submit()">{{typeSpecialiteModal}}</button>
+	            <button class="btn btn-default" ng-click="cancel()">Annuler</button>
+	        </div>
+    	</script>
+    <!-- end modal -->
+</div>
+</div>
+</div>

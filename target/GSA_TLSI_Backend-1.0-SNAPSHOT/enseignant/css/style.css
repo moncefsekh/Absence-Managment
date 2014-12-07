@@ -1,0 +1,220 @@
+@font-face {
+    font-family: 'PFBeau-Bold';
+    src: url('../fonts/PFBeauSansPro-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PFBeau-Black';
+    src: url('../fonts/PFBeauSansPro-Black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PFBeau-Reg';
+    src: url('../fonts/PFBeauSansPro-Reg.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PFBeau-SeBold';
+    src: url('../fonts/PFBeauSansPro-SeBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'OpenSansLight';
+    src: url('../fonts/OpenSans-Light-webfont.eot');
+    src: url('../fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Light-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Light-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Light-webfont.svg#OpenSansLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('../fonts/OpenSans-Regular-webfont.eot');
+    src: url('../fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansSemibold';
+    src: url('../fonts/OpenSans-Semibold-webfont.eot');
+    src: url('../fonts/OpenSans-Semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSans-Semibold-webfont.woff') format('woff'),
+         url('../fonts/OpenSans-Semibold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSans-Semibold-webfont.svg#OpenSansSemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url('../fonts/OpenSansBold-webfont.eot');
+    src: url('../fonts/OpenSansBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/OpenSansBold-webfont.woff') format('woff'),
+         url('../fonts/OpenSansBold-webfont.ttf') format('truetype'),
+         url('../fonts/OpenSansBold-webfont.svg#OpenSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body{
+	overflow-y:scroll;  
+}
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+#authentification{
+	margin-top: 120px;
+}
+
+.row{
+	-webkit-transition: all 1s ease-in-out;
+	   -moz-transition: all 1s ease-in-out;
+	    -ms-transition: all 1s ease-in-out;
+	     -o-transition: all 1s ease-in-out;
+	        transition: all 1s ease-in-out;
+}
+.time-label{
+
+	width: 60px;
+}
+
+#liste-etudiants .label,#liste-etudiants tr{
+	-webkit-transition: all 0.5s ease-in-out;
+	   -moz-transition: all 0.5s ease-in-out;
+	    -ms-transition: all 0.5s ease-in-out;
+	     -o-transition: all 0.5s ease-in-out;
+	        transition: all 0.5s ease-in-out;
+}
+
+
+.addon-error{
+	background-color:#b94a48;
+	color: #f3eaea;
+}
+
+#input-error, #input-error:focus{
+	border: 1px solid #b94a48; 
+}
+
+.primary-light{
+	background-color: #ddf4e6;
+}
+.info-light{
+	background-color: #fff;
+}
+
+.warning-light{
+	background-color: #fae8ce;
+}
+
+.danger-light{
+	background-color: #f3eaea;
+}
+
+.default-light{
+	background-color: #fff;
+}
+
+.bordered-top-left{
+	border-top-left-radius: 5px;
+}
+.bordered-top-right{
+	border-top-right-radius: 5px;
+}
+.bordered-bottom-left{
+	border-bottom-left-radius: 5px;
+}
+.bordered-bottom-right{
+	border-bottom-right-radius: 5px;
+}
+.bordered-top{
+	border-radius: 5px 5px 0 0;
+}
+.bordered-bottom{
+	border-radius: 0 0 5px 5px;
+}
+.bordered-left{
+	border-radius: 5px 0 0 5px;
+}
+.bordered-right{
+	border-radius: 0 5px 5px 0;
+}
+.bordered-radius{
+	border-radius: 5px;
+}
+.messageConfirm{
+	position: fixed;
+	z-index: 5;
+	width: 40%;
+	margin: auto;
+	top: 10px;
+	left: 30%;
+	border: 1px solid #ddd;
+}
+.panel .pull-right,.list-group .pull-right{
+    margin-left: 3px;
+}
+.well.message{
+    text-align: center;
+    height: 350px;
+    padding-top: 14%;
+}
+
+.well.message p{
+    font-size: 24px;
+    opacity: .3;
+    
+}
+.well.message i{
+    font-size: 96px;
+    opacity: .2;
+    
+}
+
+/*
+.ng-enter{
+	-webkit-transition: all 0.5s ease-in-out;
+	   -moz-transition: all 0.5s ease-in-out;
+	    -ms-transition: all 0.5s ease-in-out;
+	     -o-transition: all 0.5s ease-in-out;
+	        transition: all 0.5s ease-in-out;
+	opacity: 0;
+}
+.ng-enter-active{
+	opacity: 1;
+}
+*/
+
+.enseignement-repeat.ng-move,
+.enseignement-repeat.ng-enter,
+.enseignement-repeat.ng-leave {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+ 
+.enseignement-repeat.ng-leave.ng-leave-active,
+.enseignement-repeat.ng-move,
+.enseignement-repeat.ng-enter {
+  opacity:0;
+  max-height: 0px;
+}
+ 
+.enseignement-repeat.ng-leave,
+.enseignement-repeat.ng-move.ng-move-active,
+.enseignement-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height: 300px;
+}

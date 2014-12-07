@@ -1,0 +1,51 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h4>
+			<span class="glyphicon glyphicon-list"></span>
+			Les plus absentés
+			<!--<span class="label label-primary-active pull-right">TP Groupe 2</span>-->
+		</h4>
+	</div>
+	<div class="panel-body">
+		<table class="table">
+			<thead>
+				<tr>
+					<th><h4>N°</h4></th>
+					<th>
+						<h4>Nom Prénom</h4>
+					</th>
+					<th ng-if="!selectedGroupeCode">
+						<h4>Groupe</h4>
+					</th>
+					<th>
+						<h4>Absences</h4>
+					</th>
+					<th>
+						<h4>Justifiées</h4>
+					</th>
+					<th ng-if="!selectedEnsCode">
+						<h4>Enseignement</h4>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="absence in allAbsences" class="danger-light">
+					<td>{{$index+1}}</td>
+					<td>{{absence.nom}} {{absence.prenom}}</td>
+					<td ng-if="!selectedGroupeCode" >{{absence.groupeCode}}</td>
+					<td >{{absence.absences}}</td>
+					<td>{{absence.justifiee}}</td>
+					<td ng-if="!selectedEnsCode">{{absence.ensCode}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<div class="panel-footer">
+		<div>
+			<span class="label label-default">Une absence</span>
+			<span class="label label-warning">2 absences</span>
+			<span class="label label-danger">Plus de 2 absences</span>
+		</div>
+	</div>
+</div>

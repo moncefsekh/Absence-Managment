@@ -1,0 +1,84 @@
+<div class="panel panel-primary">
+	<div class="panel-heading  bordered-radius">
+		<span class="glyphicon glyphicon-list"></span>
+		{{titreListe}}
+		<div class="row col-xs-5 pull-right">
+			<div class="input-group input-group-sm">
+				<input ng-model="qSea" type="text" class="form-control" placeholder="Ex :  module, titre ...">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button" data-toggle="tooltip" title="Paramètres"><span class="glyphicon glyphicon-cog"></span></button>
+				</span>
+			<!-- /input-group -->
+			</div>		
+		</div>
+	</div>	
+</div>
+ <div class="panel-group">
+        <div ng-repeat="abs in absences | filter :qSea | filtreSeance :selectedModuleCode" 
+			class="enseignement-repeat panel panel-primary" >
+        	<div class="panel-heading">
+        		
+				<h4>Le {{abs.absence.date_absence}}
+					<label class="label label-primary-active pull-right">{{abs.absence.heure_absence}}</label>
+					
+				</h4>
+        	</div>
+        	<div class="panel-body">
+        		<div>Module {{abs.absence.code_midule}} {{abs.absence.type}}</div>
+        	</div>
+
+        	<div class="row panel-footer panel-danger" ng-hide="{{abs.absence.statu_justifier}}">
+        		<div class="col-xs-12">
+        				<a data-toggle="modal" data-target="#envoi-reclamation" href="" class="btn btn-sm btn-danger pull-right">
+							Envoyez reclamation
+							<span class="glyphicon glyphicon-user"></span>
+						</a>
+        				<p class="text-danger">Absence non justifiée</p>
+        				
+				</div>
+        	</div>
+        	<div class="row panel-footer panel-primary" ng-show="{{abs.absence.statu_justifier}}">
+        		<div class="col-xs-12">
+        				<div class="text-primary">Absence justifiée</div>
+				</div>
+        	</div>
+        </div>
+        
+
+        <!-- /.modal -->
+
+<div class="modal fade" id="envoi-reclamation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header panel-heading">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title" id="myModalLabel">Ajouter enseignant</h4>
+		</div>
+		<div class="modal-body">
+			<div class="col-md-12">
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">Reclamation</label>
+						<div class="input-group col-sm-9">
+							<textarea type="text" ng-model="reclamation" class="form-control" id="" rows='15'>
+							</textarea>
+						</div>
+					</div>
+				</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+		<button type="submit" ng-click="set_reclamation()" class="btn btn-primary">Enregistrer les changements</button>
+	</div>
+</div>
+<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+</div>
+<div class="well message" ng-show="(absences | filtreSeance :selectedModuleCode).length==0">
+ 			<i class="fa fa-graduation-cap"></i>
+ 			<p>Aucune absence pour le module {{selectedModuleCode}} {{listeVide}}</p>
+ </div>

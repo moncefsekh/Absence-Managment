@@ -1,0 +1,44 @@
+<div class="well well-sm">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="pull-left" style="margin-top: 19px">{{menuTitre}}</h4>
+				<div class="btn-group pull-right">
+					<div ng-repeat="spe in $root.getSpecialites" class="btn-group" dropdown>
+						<a href="#/etudiants/{{spe.code_specialite | lowercase}}/l2" class="btn btn-default" ng-class="{'btn-primary':(spe.code_specialite==specialite)}">
+							<span class="fa fa-th-list"></span>
+							{{spe.code_specialite}}
+						</a>
+						<button type="button" class="btn btn-default dropdown-toggle" ng-class="{'btn-primary':(spe.code_specialite==specialite)}">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a href="#/etudiants/{{spe.code_specialite | lowercase}}/l2"> <i class="fa fa-th-list"></i>
+									2 Licence
+								</a>
+							</li>
+							<li>
+								<a href="#/etudiants/{{spe.code_specialite | lowercase}}/l3"> <i class="fa fa-th-list" ></i>
+									3 Licence
+								</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="#/etudiants/{{spe.code_specialite | lowercase}}/m1">
+									<i class="fa fa-th-list"></i>
+									1 Master
+								</a>
+							</li>
+							<li>
+								<a href="#/etudiants/{{spe.code_specialite | lowercase}}/m2">
+									<i class="fa fa-th-list"></i>
+									2 Master
+								</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>

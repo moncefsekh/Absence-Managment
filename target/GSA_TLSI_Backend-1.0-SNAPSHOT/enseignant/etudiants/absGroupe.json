@@ -1,0 +1,44 @@
+[
+    {
+        "id": 0,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "ensCode": "GPL_TD",
+        "absences": 3,
+        "justifiee":1
+    },
+    {
+        "id": 1,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "ensCode": "GPL_TD",
+        "absences": 2,
+        "justifiee":1
+    },
+    {
+        "id": 2,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "ensCode": "GPL_TD",
+        "absences": 4,
+        "justifiee":2
+    },
+    {
+        "id": 3,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "ensCode": "GPL_TD",
+        "absences": 1,
+        "justifiee":1
+    },
+    {
+        "id": 4,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "ensCode": "GPL_TD",
+        "absences": 1,
+        "justifiee":1
+    }
+
+
+]

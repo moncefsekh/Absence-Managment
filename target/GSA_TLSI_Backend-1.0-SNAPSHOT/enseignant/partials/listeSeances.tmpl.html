@@ -1,0 +1,76 @@
+<div class="panel panel-primary">
+	<div class="panel-heading  bordered-radius">
+		<span class="glyphicon glyphicon-list"></span>
+		{{titreListe}}
+		<div class="row col-xs-5 pull-right">
+			<div class="input-group input-group-sm">
+				<input ng-model="qEns" type="text" class="form-control" placeholder="Ex :  module, groupe ...">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button" data-toggle="tooltip" title="Paramètres"><span class="glyphicon glyphicon-cog"></span></button>
+				</span>
+			<!-- /input-group -->
+			</div>		
+		</div>
+	</div>	
+</div>
+ <div class="panel-group">
+        <div ng-repeat="sea in seances | filter :qEns" 
+			class="enseignement-repeat panel panel-primary" >
+        	<div class="panel-heading">
+        		<h4>Module {{sea.seance.code_module}} {{sea.seance.type}} {{sea.seance.code_groupe}}
+					<label class="label label-primary-active pull-right">
+						{{(sea.seance.heure_changement) ? sea.seance.heure_changement : sea.seance.heure_seance}}
+					</label>
+					<label class="label label-primary-active pull-right">
+						{{(sea.seance.date_changement) ? sea.seance.date_changement : sea.seance.date_seance}}
+					</label>
+					<span class="pull-right" ng-show="{{sea.seance.date_changement}}">La séance a été changé</span>
+				</h4>
+        	</div>
+        	<div class="panel-body" ng-if="sea.seance.type"><!-- Modifier etat -->
+        		
+        		<div><b>Etat d'avancement :</b> {{sea.seance.type}} a modifier</div><!-- Modifier etat -->
+        	</div>
+
+        	<div class="row panel-footer">
+        		<div class="col-xs-12">
+	        		<div class="btn-group btn-group-sm pull-right ">
+						<a ng-click="openEtatAvancement()" class="btn btn-primary">
+							Etat d'avancement
+							<span class="glyphicon glyphicon-list-alt"></span>
+						</a>
+						<a href="#/etudiants/{{sea.seance.code_specialite}}/{{sea.seance.annee_specialite}}/{{sea.seance.code_section}}/{{sea.seance.nom_groupe}}/{{sea.seance.id_Seance}}/{{sea.seance.id_Dates}}"   class="btn btn-primary">
+							Absences
+							<span class="glyphicon glyphicon-user"></span>
+						</a>
+					</div>
+				</div>
+
+        	</div>
+        </div>
+        <div class="well message" ng-show="(seances | filter :qEns).length==0">
+ 			<i class="fa fa-graduation-cap"></i>
+ 			<p>Aucune seance pour le module {{selectedModuleCode}}</p>
+ 		</div>
+
+ 		<!-- modal -->
+	   <script type="text/ng-template" id="etat.form.html">
+	        <div class="modal-header">
+	            <h4 class="modal-title">Etat avancement de la séance</h4>
+	        </div>
+	        <div class="modal-body">
+				<form action="#" method="POST" role="form">
+						<div class="form-group">
+							<label for="">Le Contenu</label>
+							<textarea rows="8" class="form-control" ng-model="seance.etat"></textarea>
+						</div>
+				</form>
+					<!-- /.modal-content -->			
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-default" ng-click="cancel()">Fermer</button>
+	            <button class="btn btn-primary" ng-click="ok()">Enregistrer les changements</button>
+	        </div>
+    	</script>
+    	<!-- end modal -->
+</div>

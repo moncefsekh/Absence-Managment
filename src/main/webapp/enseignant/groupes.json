@@ -1,0 +1,51 @@
+[
+	{
+		"id":1,
+		"code":"G1",
+		"designation" : "Groupe 1",
+		"nombre":"23",
+		"secCode":"GL3S1"
+	},
+	{
+		"id":2,
+		"code":"G2",
+		"designation" : "Groupe 2",
+		"nombre":"22",
+		"secCode":"GL3S1"
+	},
+	{
+		"id":3,
+		"code":"G2",
+		"designation" : "Groupe 2",
+		"nombre":"23",
+		"secCode":"GL2S1"
+	},
+	{
+		"id":4,
+		"code":"G3",
+		"designation" : "Groupe 3",
+		"nombre":"22",
+		"secCode":"GL2S1"
+	},
+	{
+		"id":5,
+		"code":"G1",
+		"designation" : "Groupe 1",
+		"nombre":"23",
+		"secCode":"SITW2S1"
+	},
+	{
+		"id":6,
+		"code":"G2",
+		"designation" : "Groupe 2",
+		"nombre":"22",
+		"secCode":"SITW2S1"
+	},
+	{
+		"id":7,
+		"code":"G3",
+		"designation" : "Groupe 3",
+		"nombre":"21",
+		"secCode":"SITW2S1"
+	}
+]

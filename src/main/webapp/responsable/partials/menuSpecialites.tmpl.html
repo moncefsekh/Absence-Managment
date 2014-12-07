@@ -1,0 +1,14 @@
+<div class="well well-sm">
+	<div class="row">
+		<div class="col-md-12">
+			<h4 class="pull-left" style="margin-top: 19px">{{menuTitre}}</h4>
+			<div class="btn-group pull-right">
+				<a ng-repeat="spe in $root.getSpecialites" href="#{{path}}/{{spe.code_specialite | lowercase}}" class="btn btn-default" ng-class="{'btn-primary':(spe.code_specialite==specialite)}">
+					<span class="fa fa-th-list"></span>
+					{{spe.code_specialite}}
+				</a>
+				
+			</div>
+		</div>
+	</div>
+</div>

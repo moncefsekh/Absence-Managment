@@ -1,0 +1,41 @@
+[
+    {
+        "code": 0,
+        "nom_module": "voluptate",
+        "type": "TP",
+        "code_module": "BDA",
+        "titre": "Proident enim exercitation cillum reprehenderit aliquip dolor excepteur.",
+        "etat": "Eiusmod cupidatat mollit exercitation occaecat aliqua. Mollit sit pariatur duis dolore elit dolore do. Elit deserunt adipisicing commodo ex anim enim id nisi eiusmod deserunt id mollit voluptate consequat.",
+        "date_ordinaire": "12-01-2014",
+        "date_changement": "",
+        "heur_ordinaire": "11:30",
+        "heur_changement": "",
+        "present": false
+    },
+    {
+        "code": 1,
+        "nom_module": "tempor",
+        "type": "TP",
+        "code_module": "BDA",
+        "titre": "Et nisi eu incididunt amet esse.",
+        "etat": "Quis enim ullamco exercitation ipsum minim dolor dolore. Sunt qui consequat ea occaecat. In cillum tempor exercitation eiusmod ut.",
+        "date_ordinaire": "10-09-2014",
+        "date_changement": "",
+        "heur_ordinaire": "11:30",
+        "heur_changement": "",
+        "present": false
+    },
+    {
+        "code": 2,
+        "nom_module": "velit",
+        "type": "TD",
+        "code_module": "BDA",
+        "titre": "Id fugiat id velit ad minim fugiat aliquip incididunt magna aute nulla enim nostrud.",
+        "etat": "Nulla aliqua officia sunt fugiat. Nisi consequat et incididunt esse do nulla nostrud dolor eu dolor in. Fugiat laborum eiusmod pariatur non do magna aute ea anim.",
+        "date_ordinaire": "18-10-2014",
+        "date_changement": "24-04-2014",
+        "heur_ordinaire": "11:30",
+        "heur_changement": "",
+        "present": true
+    }
+]

@@ -1,0 +1,85 @@
+[
+    {
+        "id": 0,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "groupeCode":"G1",
+        "absences": 3,
+        "justifiee":1,
+        "ensCode":"TQL_TD"
+    },
+    {
+        "id": 1,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "groupeCode":"G1",
+        "absences": 2,
+        "justifiee":1,
+        "ensCode":"TQL_TD"
+    },
+    {
+        "id": 2,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "groupeCode":"G1",
+        "absences": 4,
+        "justifiee":2,
+        "ensCode":"TQL_TD"
+    },
+    {
+        "id": 3,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "groupeCode":"G1",
+        "absences": 1,
+        "justifiee":1,
+        "ensCode":"TQL_TD"
+    },
+    {
+        "id": 4,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "groupeCode":"G1",
+        "absences": 1,
+        "justifiee":1,
+        "ensCode":"TQL_TD"
+    },
+    {
+        "id": 5,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "groupeCode":"G1",
+        "absences": 6,
+        "justifiee":3,
+        "ensCode":"TQL_TD"
+    },
+    {
+        "id": 6,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "groupeCode":"G1",
+        "absences": 5,
+        "justifiee":2,
+        "ensCode":"GPL_TD"
+    },
+    {
+        "id": 7,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "groupeCode":"G1",
+        "absences": 5,
+        "justifiee":1,
+        "ensCode":"POOJ_TP"
+    },
+    {
+        "id": 8,
+        "nom": "Flowers",
+        "prenom": "Lang",
+        "groupeCode":"G1",
+        "absences": 3,
+        "justifiee":1,
+        "ensCode":"TQL_TP"
+    }
+
+
+]

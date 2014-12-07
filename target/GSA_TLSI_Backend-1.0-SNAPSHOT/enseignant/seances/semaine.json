@@ -1,0 +1,62 @@
+[
+    {
+        "code": 0,
+        "module": "lorem",
+        "groupe": "labore",
+        "secCode":"GL3S1",
+        "groupeCode":"G1",
+        "ensCode":"TQL_TD",
+        "date": "Mer 31/03",
+        "heur":"20:21"
+    },
+    {
+        "code": 1,
+        "module": "consequat",
+        "groupe": "labore",
+        "secCode":"GL3S1",
+        "groupeCode":"G1",
+        "ensCode":"TQL_TD",
+        "date": "Mer 31/03",
+        "heur":"20:21"
+    },
+   {
+        "code": 2,
+        "module": "consequaft",
+        "groupe": "labore",
+        "secCode":"GL3S1",
+        "groupeCode":"G1",
+        "ensCode":"TQL_TD",
+        "date": "Mer 31/03",
+        "heur":"20:21"
+    },
+   {
+        "code": 3,
+        "module": "consequat",
+        "groupe": "labore",
+        "secCode":"GL3S1",
+        "groupeCode":"G1",
+        "ensCode":"TQL_TD",
+        "date": "Mer 31/03",
+        "heur":"20:21"
+    },
+    {
+        "code": 4,
+        "module": "consequat",
+        "groupe": "labore",
+        "secCode":"GL3S1",
+        "groupeCode":"G1",
+        "ensCode":"TQL_TD",
+        "date": "Mer 31/03",
+        "heur":"20:21"
+    },
+   {
+        "code": 5,
+        "module": "consequat",
+        "groupe": "labore",
+        "secCode":"GL3S1",
+        "groupeCode":"G1",
+        "ensCode":"TQL_TD",
+        "date": "Mer 31/03",
+        "heur":"20:21"
+    }
+]

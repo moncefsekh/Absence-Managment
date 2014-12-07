@@ -1,0 +1,17 @@
+<!-- modal -->
+	 <script type="text/ng-template" id="message.alert.html">
+	        <div class="modal-header {{modalParams.typeModal}}">
+	        <h4 class="modal-title"><i class="fa fa-{{modalParams.icone}}"></i>      {{modalParams.titre}}</h4>
+	        </div>
+	        <div class="modal-body">
+					<div class="col-md-12 text-{{modalParams.typeModal}}">
+						<div class="pull-right" style="opacity:0.2"><i class="fa fa-{{modalParams.icone}} fa-3x"></i></div>
+						{{modalParams.texte}}
+					</div>
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-default btn-{{modalParams.typeModal}}" ng-click="submit()">OK</button>
+	            <button class="btn btn-default btn-{{modalParams.typeModal}}" ng-click="cancel()">Annuler</button>
+	       </div>
+    </script>
+<!-- end modal -->

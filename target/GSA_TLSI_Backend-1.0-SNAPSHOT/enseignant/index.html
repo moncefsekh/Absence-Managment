@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" ng-app="enseignantApp">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" media="screen" href="lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" media="screen" href="lib/font-awesome/css/font-awesome.min.css">
+	<title>Enseignant | Nom prénom</title>
+</head>
+<body>
+<div class="container">
+	<!----------------------------------------Barre de navigation-------------------------------------->
+<nav class="navbar navbar-default" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">Gestion d'absences</a>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav">
+			<li >
+				<a href="#/">Accueil</a>
+			</li>
+			<li id="etudiants">
+				<a ng-click='showMenu()' href="#/etudiants" >Seances</a>
+			</li>
+			<li>
+				<a href="#/statistiques">Statistiques</a>
+			</li>
+			<li>
+				<a href="#">Réglements</a>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<a href="">
+					<span class="glyphicon glyphicon-info-sign"></span>
+				</a>
+			</li>
+			<li dropdown>
+				<a href="#" class="dropdown-toggle">
+					<span class="glyphicon glyphicon-user"></span>
+					Nom prénom <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a>
+							<span class="glyphicon glyphicon-cog"></span>
+							Paramètres
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a ng-click="$root.logout()">
+							<span class="glyphicon glyphicon-log-out"></span>
+							Déconnexion
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+<!-- /.navbar-collapse -->
+</nav>
+
+<!-- ------------------- views ---------------------->
+<div ng-view class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+
+
+<script type="text/javascript"	src="lib/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript"	src="lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript"  src="js/script.js"></script>
+</div>
+<!-- ------------------ footer ---------------------->
+<footer>
+	<nav class="navbar navbar-default navbar-bottom" role="navigation">
+		<ul class="nav nav-tabs nav-justified">
+			<li>
+				<a>Groupe 2</a>
+			</li>
+			<li>
+				<a>GL 3</a>
+			</li>
+			<li>
+				<a>2014</a>
+			</li>
+		</ul>
+	</nav>
+</footer>
+</div>
+
+
+
+<script type="text/javascript"	src="lib/angularjs/angular.js"></script>
+<script type="text/javascript"  src="lib/angularjs/angular-route.js"></script>
+<script type="text/javascript"	src="lib/angularjs/angular-animate.js"></script>
+<script type="text/javascript"  src="lib/angularjs/angular-resource.js"></script>
+<script type="text/javascript" src="lib/bootstrap-ui/ui-bootstrap-tpls-0.11.0.js"></script>
+
+<script type="text/javascript"  src="js/mainCtrl.js"></script>
+<script type="text/javascript"  src="js/controllers/SeancesCtrl.js"></script>
+<script type="text/javascript"  src="js/controllers/EtudiantsCtrl.js"></script>
+<script type="text/javascript"  src="js/controllers/StatistiquesCtrl.js"></script>
+
+<script type="text/javascript"  src="js/directives/EtudiantsDrctv.js"></script>
+<script type="text/javascript"  src="js/directives/SeancesDrctv.js"></script>
+<script type="text/javascript"  src="js/directives/StatistiquesDrctv.js"></script>
+
+<!--<script type="text/javascript"  src="js/services/services.js"></script>-->
+<script type="text/javascript" src="js/factories/SectionsFactory.js"></script>
+<script type="text/javascript" src="js/factories/GroupesFactory.js"></script>
+<script type="text/javascript"  src="js/factories/EtudiantsFactory.js"></script>
+<script type="text/javascript"  src="js/factories/SeancesFactory.js"></script>
+
+<script type="text/javascript"  src="js/services/etudiantsService.js"></script>
+
+<script type="text/javascript"  src="js/filters/SeancesFilter.js"></script>
+<!--<script type="text/javascript"  src="js/services/enseignementsService.js"></script>-->
+
+</body>
+</html>

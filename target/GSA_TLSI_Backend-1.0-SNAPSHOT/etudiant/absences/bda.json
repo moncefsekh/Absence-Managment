@@ -1,0 +1,18 @@
+[
+    {
+        "id": 0,
+        "code_module": "BDA",
+        "type": "TD",
+        "date_ordinaire": "12-03",
+        "heur_ordinaire": "19:59",
+        "justifiee": false
+    },
+    {
+        "id": 1,
+        "code_module": "BDA",
+        "type": "TP",
+        "date_ordinaire": "08-07",
+        "heur_ordinaire": "13:04",
+        "justifiee": true
+    }
+]

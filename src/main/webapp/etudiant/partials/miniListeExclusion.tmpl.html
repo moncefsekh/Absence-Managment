@@ -1,0 +1,22 @@
+<div class="panel panel-primary">
+	<div class="panel-heading bordered-radius">
+		<span class="glyphicon glyphicon-calendar"></span>
+		{{titreListeExc}}
+		<button class="btn btn-sm btn-primary pull-right" data-toggle="tooltip" title="Paramètres"><span class="glyphicon glyphicon-cog"></span></button>
+	</div>
+</div>
+<div class="list-group">
+	<a ng-repeat="exc in exclusions | filtreAbsences:'1'" class="list-group-item">
+		<h4 class="list-group-item-heading">
+			{{exc.absence.code_midule}}
+			<label class="label label-danger pull-right" >{{exc.absence.nbr_absence}} Absences  </label>
+		</h4>
+		<p class="list-group-item-text">{{exc.absence.nbr_absence_just}} Absences justifiée</p>
+	</a>
+</div>
+	<!--
+	<div class="well message">
+ 		<i class="fa fa-user"></i>
+ 		<p>Aucune absence dans cette semaine</p>
+ 	</div>
+ 	-->

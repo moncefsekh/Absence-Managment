@@ -1,0 +1,153 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="pull-left">
+					<span class="glyphicon glyphicon-list"></span>
+					Liste des Etudiants {{specialite}} {{anneeSpecilaite}} {{selectedAnnee}}
+
+				</h4>
+				<a ng-click="tableParams.sorting({})" class="btn btn-lg btn-primary hide-print">
+						<span class="fa fa-refresh"></span>
+				</a>
+				<div class="btn-group btn-group-sm pull-right hide-print">
+					<label class="btn btn-default" ng-model="selectedAnnee" btn-radio="'L2'" uncheckable>L2</label>
+					<label class="btn btn-default" ng-model="selectedAnnee" btn-radio="'L3'" uncheckable>L3</label>
+					<label class="btn btn-default" ng-model="selectedAnnee" btn-radio="'M1'" uncheckable>M1</label>
+					<label class="btn btn-default" ng-model="selectedAnnee" btn-radio="'M2'" uncheckable>M2</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<!--tr*120>td{$}+td{Nom-$ Prénom-$}+td{1$$$$}+td{G-1}+(td>span.label.label-info{1})+td{2011}-->
+        <table ng-table="tableParams" class="table table-hover ng-table-responsive">
+        	<tbody ng-repeat="group in $groups ">
+	        <tr class="ng-table-group active" >
+	        	<td colspan="{{$columns.length}}">
+	        		<a ng-click="group.$hideRows = !group.$hideRows">
+	        			<span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span> <strong>{{ group.value }}</strong>
+	        		</a>
+	        	</td>
+	        </tr>
+        	<tr ng-hide="group.$hideRows" ng-repeat="etu in group.data |filtreAnnee:selectedAnnee"
+        		ng-click="openDetailsEtudiant(etu.absence.num_carte)">
+        			<td data-title="'N° Carte'" sortable="'absence.num_carte'">{{etu.absence.num_carte}}</td>
+					<td data-title="'Nom Prénom'" sortable="'absence.nom'">{{etu.absence.nom}} {{etu.absence.prenom}}</td>
+					<td data-title="'Année'" sortable="'absence.anneeSpecilaite'">{{etu.absence.anneeSpecilaite}}</td>
+					<td data-title="'Absences'" sortable="'absence.nbr_absence'">
+						<span class="label label-danger">
+							  {{etu.absence.nbr_absence}}
+						</span>
+					</td>
+					<td data-title="'Absences'" sortable="'absence.nbr_absence_just'">
+						<span class="label label-primary">
+							  {{etu.absence.nbr_absence_just}}
+						</span>
+					</td>
+			</tr>
+			</tbody>
+        </table>
+	</div>
+	<div class="panel-footer">
+		<div class="btn-group btn-group-sm pull-right hide-print">
+			<button  print-div="[stat-liste-etudiants]" class="btn btn-primary">
+				Imprimer
+				<span class="fa fa-print"></span>
+			</button>
+		</div>
+		<p style="height:30px" >
+			<span class="label label-primary">30{{getNombreAbsences(0)}}</span>
+			Etudiants exculs
+		</p>
+	</div>
+</div>
+<div ng-show="messageConfim" class="panel panel-primary bordered-radius messageConfirm">
+	<div class="panel-heading">Confirmation</div>
+	<div class="panel-body bordered-bottom">
+		La liste de {{nombreAbsence}} absences a été envoyer
+		<a ng-click="envoiAbsences()" class="btn btn-xs btn-primary pull-right">
+			Annuler
+			<span class="glyphicon glyphicon-share-alt"></span>
+		</a>
+	</div>
+</div>
+<!-- modal -->
+	   <script type="text/ng-template" id="etudiant.details.html">
+	        <div class="modal-header">
+	            <h4 class="modal-title">Détails etudiant</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="row">
+					<div class="col-md-3 ">
+						<span style="font-size:62px" class="fa-stack fa-lg text-muted"> <i class="fa fa-square-o fa-stack-2x"></i> <i class="fa fa-user fa-stack-1x"></i>
+						</span>
+					</div>
+					<div class="col-md-9 ">
+						<div class="row">
+							<div class="col-md-4">
+								<p>Nom prénom :</p>
+								<p>N° Carte :</p>
+								<p>Année :</p>
+								<p>Groupe :</p>
+
+							</div>
+							<div class="col-md-8">
+								<p>{{getEtudiant.nom}} {{getEtudiant.prenom}}</p>
+								<p>{{getEtudiant.num_carte}}</p>
+								<p>{{getEtudiant.anneeSpecilaite}} {{getEtudiant.specialite}}</p>
+								<p>{{getEtudiant.codeGroupe}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-4">
+							<p>Sexe :</p>
+							<p>Année de Bac :</p>
+							<p>Moyenne de Bac :</p>
+							<p>Date de naissance :</p>
+
+						</div>
+						<div class="col-md-8">
+							<p>{{getEtudiant.sexe}}</p>
+							<p>{{getEtudiant.date_Bac}}</p>
+							<p>{{getEtudiant.moy_Bac}}</p>
+							<p>{{getEtudiant.date_naissance_Etudiant}}</p>
+						</div>
+					</div>
+				</div>
+				<table id="absencesEtudiant" class="table table-condensed table-hover">
+						<thead>
+							<tr>
+								<th>Modules</th>
+								<th>Séances</th>
+								<th>Les absences</th>
+								<th>Justifiée</th>
+								<th>Etat</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!--tr*10>td{GPL}+td{TP}+(td>span.label.label-info{1})+(td>span.label.label-success{1})+td{}-->
+							<tr ng-repeat="absence in modulesEtudiants" 
+								ng-init="exculs = (((absence.absence.nbr_absence - absence.absence.nbr_absence_just)>=1) || absence.absence.nbr_absence>5)"
+								ng-class="{danger:exculs}">
+								<td>{{absence.absence.code_midule}}</td>
+								<td>{{absence.absence.type_seance}}</td>
+								<td><span class="label label-info">{{absence.absence.nbr_absence}}</span></td>
+								<td><span class="label label-success">{{absence.absence.nbr_absence_just}}</span></td>
+								<td>
+								<span ng-if='exculs' class="label label-danger">Exculs</span>
+								</td>
+								
+							</tr>
+						</tbody>
+					</table>
+			</div>
+	        <div class="modal-footer">
+	            <button class="btn btn-default" ng-click="cancel()">Fermer</button>
+	        </div>
+    	</script>
+    <!-- end modal -->
+<!-- Modal -->

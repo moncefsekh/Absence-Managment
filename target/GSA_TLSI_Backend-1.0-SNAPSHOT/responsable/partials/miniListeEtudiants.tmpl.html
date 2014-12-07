@@ -1,0 +1,66 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="pull-left">
+					<span class="glyphicon glyphicon-list"></span>
+					Les plus absentés
+				</h4>
+				<div class="btn-group btn-group-sm pull-right hide-print" dropdown>
+					<button type="button" class="btn btn-default dropdown-toggle" >
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li>
+							<a  print-div="section[mini-liste-etudiants]" > <i class="fa fa-print"></i>
+								Imprimer
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="btn-group btn-group-sm btn-group-justified hide-print">
+			<label ng-repeat="etu in getEtudiants | unique:'etudiant.codeGroupe'" class="btn btn-default" ng-model="selectedGroupeMini" btn-radio="etu.etudiant.codeGroupe" uncheckable>{{etu.etudiant.codeGroupe}}</label>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						<h5>N°</h5>
+					</th>
+					<th>
+						<h5>Nom Prénom</h5>
+					</th>
+					<th>
+						<h5>Absences</h5>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="etu in getEtudiants | filtreGroupe:selectedGroupeMini | orderBy:'etudiant.nombreAbsences':true | limitTo:10" 
+					ng-class="{'warning':(etu.etudiant.nombreAbsences>
+					1 && etu.etudiant.nombreAbsences
+					<=2),'danger':etu.etudiant.nombreAbsences>
+						2}">
+						<td>{{$index+1}}</td>
+						<td>
+							{{etu.etudiant.nom_Etudiant}} {{etu.etudiant.prenom_Etudiant}}
+						</td>
+						<td >{{etu.etudiant.nombreAbsences}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		<div class="panel-footer hide-print">
+			<div>
+				<span class="label label-default">Une absence</span>
+				<span class="label label-warning">2 absences</span>
+				<span class="label label-danger">Plus de 2 absences</span>
+			</div>
+		</div>
+	</div>

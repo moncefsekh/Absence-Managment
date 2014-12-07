@@ -1,0 +1,197 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="pull-left">
+					<span class="glyphicon glyphicon-list"></span>
+					Liste des Enseignants {{specialite}}
+				</h4>
+				<div class="btn-group btn-group-sm pull-right hide-print" dropdown>
+					<button type="button" ng-click="openFormEnseignant('Ajouter')"  class="btn btn-default">
+						Ajouter <i class="fa fa-plus"></i>
+					</button>
+					<button type="button" class="btn btn-default dropdown-toggle" >
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li>
+							<a print-div="section[liste-enseignants]"> 
+							<i class="fa fa-print"></i>
+								Imprimer
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<table ng-table="tableParams" class="table table-hover ng-table-responsive">
+        	<tr ng-table="tableParams" ng-repeat="ens in $data | filtreGroupe:selectedGroupe" 
+        		>
+        			<td data-title="'N°'" sortable="'enseignant.idEnseignant'">{{ens.enseignant.idEnseignant}}</td>
+					<td data-title="'Nom Prénom'" sortable="'enseignant.nom'">{{ens.enseignant.nom}} {{ens.enseignant.prenom}}</td>
+					<td data-title="'Modules'" sortable="'enseignant.nbrModules'">{{ens.enseignant.nbrModules}}</td>
+					<td data-title="'Grade'" sortable="'enseignant.grade'">
+						<span class="label label-primary"
+							  ng-class="{'label-default':ens.enseignant.grade=='Maitre assistant A','label-warning':ens.enseignant.grade=='Maitre assistant B','label-info':ens.enseignant.grade=='Maitre conférence A','label-success':ens.enseignant.grade=='Maitre conférence B','label-danger':ens.enseignant.grade=='Professeur'}">
+							  {{ens.enseignant.grade}}
+						</span>
+					</td>
+					<td class="hide-print">
+						<div class="btn-group pull-right" dropdown>
+							<a class="btn btn-xs btn-default dropdown-toggle ">
+								Plus<i class="fa fa-plus"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a ng-click="openDetailsEnseignant(ens.enseignant.idEnseignant)"> <i class="fa fa-th-list"></i>
+										Détails
+									</a>
+								</li>
+								<li>
+									<a ng-click="openFormEnseignant('Modifier',ens.enseignant.idEnseignant)"> <i class="fa fa-pencil" ></i>
+										Modifier
+									</a>
+								</li>
+							</ul>
+						</div>
+					</td>
+			</tr>
+        </table>
+	</div>
+	<div class="panel-footer">
+		<p>
+			<span class="label label-danger">{{getNombreTypeEnseignants('Professeur')}}</span>
+			Professeur(s)&nbsp;&nbsp;	
+			<span class="label label-info">{{getNombreTypeEnseignants('Maitre conférence A')}}</span>
+			MCA&nbsp;&nbsp;
+			<span class="label label-success">{{getNombreTypeEnseignants('Maitre conférence B')}}</span>
+			MCB&nbsp;&nbsp;
+			<span class="label label-default">{{getNombreTypeEnseignants('Maitre assistant A')}}</span>
+			MAA&nbsp;&nbsp;
+			<span class="label label-warning">{{getNombreTypeEnseignants('Maitre assistant B')}}</span>
+			MAB&nbsp;&nbsp;
+		</p> 
+	</div>
+</div>
+<!-- modal -->
+	   <script type="text/ng-template" id="enseignant.details.html">
+	        <div class="modal-header">
+	            <h4 class="modal-title">Détails enseignant</h4>
+	        </div>
+	        <div class="modal-body">
+				<div class="row">
+					<div class="col-md-3 ">
+						<span style="font-size:62px" class="fa-stack fa-lg text-muted"> <i class="fa fa-square-o fa-stack-2x"></i> <i class="fa fa-user fa-stack-1x"></i>
+						</span>
+					</div>
+					<div class="col-md-9 ">
+						<div class="row">
+							<div class="col-md-4">
+								<p>Nom prénom :</p>
+								<p>Code  :</p>
+								<p>Spécialité  :</p>
+								<p>Grade :</p>
+
+							</div>
+							<div class="col-md-8">
+								<p>{{getEnseignant.nom}} {{getEnseignant.prenom}}</p>
+								<p>{{getEnseignant.idEnseignant}}</p>
+								<p>{{getEnseignant.specialite}}</p>
+								<p>{{getEnseignant.grade}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-5">
+							<p>Date de naissance:</p>
+						</div>
+						<div class="col-md-7">
+							<p>{{getEnseignant.dateNaissance}}</p>
+						</div>
+					</div>
+				</div>
+				<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th>Modules</th>
+								<th>Séances</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!--tr*10>td{GPL}+td{TP}+(td>span.label.label-info{1})+(td>span.label.label-success{1})+td{}-->
+							<tr ng-repeat="module in modulesEnseignants">
+								<td>{{module.module.code_module}}</td>
+								<td>{{module.module.type}}</td>
+							</tr>
+						</tbody>
+					</table>
+			</div>
+	        <div class="modal-footer">
+	            <button class="btn btn-default" ng-click="cancel()">Fermer</button>
+	        </div>
+    	</script>
+    <!-- end modal -->
+<!-- Modal -->
+
+<!-- modal -->
+<script type="text/ng-template" id="enseignant.form.html">
+		<div class="modal-header panel-heading">
+			<button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+			<h4 class="modal-title" >{{typeModal}} un enseignant</h4>
+		</div>
+		<div class="modal-body">
+			<div class="col-md-12">
+				<form class="form-horizontal" role="form" name="fens">
+					<div class="form-group has-success">
+						<label for="" class="col-sm-3 control-label">Nom</label>
+						<div class="input-group col-sm-9">
+							<input type="text" class="form-control" required ng-pattern='/[A-Za-z]$/' ng-model="getEnseignant.nom" placeholder="Ex: BEN ABDELLAH">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-ok"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group has-error">
+						<label for="" class="col-sm-3 control-label">Prénom</label>
+						<div class="input-group col-sm-9">
+							<input type="text" class="form-control" required id="" ng-pattern='/[A-Za-z]$/' ng-model="getEnseignant.prenom" placeholder="Ex: Mohammed">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-remove"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">Date naissance</label>
+						<div class="col-sm-9">
+							<input type="date" required class="form-control" ng-model="getEnseignant.dateNaissance">
+							<span class="input-group-addon hidden">
+								<span class="glyphicon glyphicon-ok"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">Grade</label>
+						<div class="col-sm-9">
+							<select required type="text" class="form-control" ng-model="getEnseignant.grade">
+								<option class="form-control" ng-selected="getEnseignant.grade=='Maitre assistant A'" >Maitre assistant A</option>
+								<option class="form-control" ng-selected="getEnseignant.grade=='Maitre assistant B'">Maitre assistant B</option>
+								<option class="form-control" ng-selected="getEnseignant.grade=='Maitre conférence A'">Maitre conférence A</option>
+								<option class="form-control" ng-selected="getEnseignant.grade=='Maitre conférence B'">Maitre conférence B</option>
+								<option class="form-control" ng-selected="getEnseignant.grade=='Professeur'">Maitre Professeur</option>
+								
+							</select>
+						</div>
+					</div>
+				</form>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-disabled="fens.$invalid" ng-click="submit()">{{typeModal}} l'enseignant</button>
+		<button class="btn btn-default" ng-click="cancel()">Fermer</button>
+	</div>
+    	</script>
+    <!-- end modal -->

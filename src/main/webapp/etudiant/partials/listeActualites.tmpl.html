@@ -1,0 +1,52 @@
+<div class="panel panel-primary">
+	<div class="panel-heading  bordered-radius">
+		<span class="glyphicon glyphicon-list"></span>
+		{{titreListe}}
+		<div class="row col-xs-5 pull-right">
+			<div class="input-group input-group-sm">
+				<input ng-model="qSea" type="text" class="form-control" placeholder="Ex :  module, titre ...">
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="button" data-toggle="tooltip" title="Paramètres"><span class="glyphicon glyphicon-cog"></span></button>
+				</span>
+			<!-- /input-group -->
+			</div>		
+		</div>
+	</div>	
+</div>
+ <div class="panel-group">
+        <div ng-repeat="act in actualites |filtreActualite:selectedModuleCode" 
+			class="enseignement-repeat panel panel-primary">
+        	<div class="panel-heading">
+        		
+				<h4>Module {{act.actualites.code_module}} {{act.actualites.type}}
+					<label class="label label-primary-active pull-right">
+						{{(act.actualites.heure_changement) ? act.actualites.heure_changement : act.actualites.heure_seance}}
+					</label>
+					<label class="label label-primary-active pull-right">
+						{{(act.actualites.date_changement) ? act.actualites.date_changement : act.actualites.date_seance}}
+					</label>
+
+					<span class="pull-right" ng-show="{{act.actualites.date_changement}}">La séance a été changé</span>
+				</h4>
+        	</div>
+        	<div class="panel-body" ng-if="act.titre || act.actualites.etat_avancement">
+        		<div ng-if="act.titre"><b>Titre :</b> {{act.titre}}</div>
+        		<div ng-if="act.actualites.etat_avancement"><b>Etat d'avancement :</b> {{act.actualites.etat_avancement}}</div>
+        	</div>
+
+        	<div class="row panel-footer panel-danger" ng-show="{{act.present}}">
+        		<div class="col-xs-12">
+        				<div class="pull-right text-danger">Absent</div>
+				</div>
+        	</div>
+        	<div class="row panel-footer panel-primary" ng-show="{{act.present}}">
+        		<div class="col-xs-12">
+        				<div class="pull-right text-primary">Présent</div>
+				</div>
+        	</div>
+        </div>
+</div>
+ <div class="well message" ng-show="(actualites | filtreSeance:selectedModuleCode).length==0">
+ 			<i class="fa fa-info-circle"></i>
+ 			<p>Aucune actualité pour le module {{selectedModuleCode}} {{listeVide}}</p>
+ </div>

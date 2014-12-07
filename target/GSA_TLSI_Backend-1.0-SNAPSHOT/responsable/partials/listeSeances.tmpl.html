@@ -1,0 +1,166 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="pull-left">
+					<span class="glyphicon glyphicon-list"></span>
+					La liste des seances
+				</h4>
+				<div class="btn-group btn-group-sm pull-right hide-print">
+					<button ng-click="openSeance('Modifier')" class="btn btn-default hide-print" ng-disabled="!selectedSeance">
+						Modifier <i class="fa fa-pencil"></i>
+					</button>
+					<button ng-click="openSeance('Changer')" class="btn btn-default hide-print" ng-disabled="!selectedSeance">
+						Changer <i class="fa fa-share"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- modal -->
+	   <script type="text/ng-template" id="seance.form.html">
+	        <div class="modal-header">
+	            <h4 class="modal-title">{{typeSeanceModal}} une séance</h4>
+	        </div>
+	        <div class="modal-body">
+					<div class="col-md-12">
+						<p>Les champs indiqués par (*) sont obligatoires.</p>		
+						<form ng-if="typeSeanceModal != 'Changer'" class="form-horizontal" name="fsea" role="form">
+							<div class="form-group">
+								<label for="" class="col-sm-4 control-label">Année (*)</label>
+								<div class="col-sm-8">
+									<div class="btn-group btn-group-justified">
+										<label ng-repeat="an in annees |filter:specialite:true" class="btn btn-default" ng-click="getSeance.idSpecialite = an.specialite.id_Specialite" ng-model="getSeance.annee_specialite" btn-radio="'{{an.specialite.annee}}'" uncheckable>{{an.specialite.code_specialite}} - {{an.specialite.annee}}</label>
+									</div>
+								</div>
+							</div>
+							<div  class="form-group">
+								<label for="" class="col-sm-4 control-label">Module (*)</label>
+								<div class="col-sm-8">
+									<select required class="form-control"
+											ng-init="module = (modules|filter:getSeance.code_module:true)[0];
+													getSeance.idModule = module.module.id_Module;"
+											ng-change="getSeance.code_module = module.module.code_module;
+														getSeance.idModule = module.module.id_Module"
+											ng-model="module"
+											ng-options="mod.module.code_module for mod in modules | filter:getSeance.annee_specialite:true"
+											>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-4 control-label">Type séance (*)</label>
+								<div class="col-sm-8">
+									<div class="btn-group">
+										<label class="btn btn-default" required ng-model="getSeance.type" btn-radio="'TD'" uncheckable>TD</label>
+										<label class="btn btn-default" required ng-model="getSeance.type" btn-radio="'TP'" uncheckable>TP</label>
+									</div>
+								</div>
+							</div>
+							<div  class="form-group">
+								<label for="" class="col-sm-4 control-label">Enseignant (*)</label>
+								<div class="col-sm-8">
+									<select required class="form-control"
+											ng-init="ens = (allEnseignants | filter:getSeance.nomEnseignant:getSeance.getSeance.prenomEnseignant)[0];
+													getSeance.idEnseignant = ens.enseignant.idEnseignant;"
+											ng-change="getSeance.idEnseignant = ens.enseignant.idEnseignant;
+														getSeance.nomEnseignant = ens.enseignant.nom;
+														getSeance.prenomEnseignant = ens.enseignant.prenom"
+											ng-model="ens"
+											ng-options="ens.enseignant.nom+' '+ens.enseignant.prenom group by ens.enseignant.grade for ens in allEnseignants">
+									</select>
+								</div>
+							</div>
+							<div class="form-group" ng-init="dates = (module.module.semestre=='S1') ? $root.AppParams.dateDebutSemestre1 : $root.AppParams.dateDebutSemestre2">
+								<label for="" class="col-sm-4 control-label">Date (*)</label>
+								<div class="col-sm-8" ng-init="getSeance.date_seance=$root.addDate($root.AppParams.dateDebutSemestre1,0)">
+									<select required ng-model="getSeance.date_seance" class="form-control">
+										<option value="{{$root.addDate(dates,0)}}">{{$root.addDate(dates,0) | date:'EEEE'}}</option>
+										<option value="{{$root.addDate(dates,1)}}">{{$root.addDate(dates,1) | date:'EEEE'}}</option>
+										<option value="{{$root.addDate(dates,2)}}">{{$root.addDate(dates,2) | date:'EEEE'}}</option>
+										<option value="{{$root.addDate(dates,3)}}">{{$root.addDate(dates,3) | date:'EEEE'}}</option>
+										<option value="{{$root.addDate(dates,4)}}">{{$root.addDate(dates,4) | date:'EEEE'}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-4 control-label">Horaire (*)</label>
+								<div class="col-sm-8">
+									<input required type="time" min="08:30" max="16:00" ng-model="getSeance.heure_seance" class="form-control">
+								</div>
+							</div>
+						</form>
+
+
+
+						<form ng-if="typeSeanceModal == 'Changer'" class="form-horizontal" role="form">
+							<div class="form-group">
+								<label for="" class="col-sm-4 control-label">Date (*)</label>
+								<div class="col-sm-8">
+									<input required type="date" min="{{$root.AppParams.dateDebutSemestre1}}" max="{{$root.AppParams.dateFinSemestre2}}" ng-init="getSeance.date_changement = getSeance.date_seance" ng-model="getSeance.date_changement" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="col-sm-4 control-label">Horaire (*)</label>
+								<div class="col-sm-8">
+									<input required ng-init="getSeance.heure_changement = getSeance.heure_seance" type="time" min="08:30" max="16:00" ng-model="getSeance.heure_changement" class="form-control">
+								</div>
+							</div>
+						</form>
+							
+					</div>
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-primary" ng-disabled="fsea.$invalid"  ng-click="submit()">{{typeSeanceModal}} la séance</button>
+	            <button class="btn btn-default" ng-click="cancel()">Annuler</button>
+	        </div>
+    	</script>
+    <!-- end modal -->
+
+	<div class="panel-body">
+		<table class="table table-hover"> 
+			<thead>
+				<tr>
+					<th>
+						<h5>Module</h5>
+					</th>
+					<th>
+						<h5>Type</h5>
+					</th>
+					<th>
+						<h5>Enseignant</h5>
+					</th>
+					<th>
+						<h5>Année</h5>
+					</th>
+					<th>
+						<h5>Horaire</h5>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!--tr[ng-click="selectModule($event,'id')"]*35>td{POOJ}+td{Programmation Orientée Objet JAVA}+td{L2}+td{S1}+td{6}-->
+				<tr ng-repeat="seance in seances" ng-click="selectSeance($event,seance.seance)" 
+				ng-class="{warning:seance.seance.date_changement}">
+					<td>{{seance.seance.code_module}}</td>
+					<td>{{seance.seance.type}}</td>
+					<td>{{seance.seance.nomEnseignant}} {{seance.seance.prenomEnseignant}}</td>
+					<td>{{seance.seance.annee_specialite}}</td>
+					<td ng-hide="seance.seance.date_changement">{{seance.seance.date_seance|date:'EEEE, dd-MM'}} à {{seance.seance.heure_seance}}</td>
+					<td ng-show="seance.seance.date_changement">{{seance.seance.date_changement | date:'EEEE, dd-MM' }} à {{seance.seance.heure_changement}}</td>
+					<td><a popover-placement="bottom" popover="La séance a été changé" 
+					ng-show="seance.seance.date_changement" class="text-warning"><span class="fa fa-info-circle"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<div class="panel-footer hide-print">
+		<div>
+			<span class="label label-default">Une absence</span>
+			<span class="label label-warning">2 absences</span>
+			<span class="label label-danger">Plus de 2 absences</span>
+		</div>
+	</div>
+</div>

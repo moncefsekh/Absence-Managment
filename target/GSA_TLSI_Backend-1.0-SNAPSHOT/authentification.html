@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr" ng-app="App"><!---->
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" media="all" href="lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" media="all" href="lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap-select/bootstrap-select.min.css"/>
+	<script type="text/javascript"	src="lib/angularjs/angular.js"></script>
+	<script type="text/javascript"	src="lib/angularjs/angular-animate.js"></script>
+	<script type="text/javascript"  src="lib/angularjs/angular-resource.js"></script>
+
+	<script type="text/javascript" src="lib/bootstrap-ui/ui-bootstrap-tpls-0.11.0.js"></script>
+	<script type="text/javascript"  src="js/app.js"></script>
+	<script type="text/javascript" src="js/factories/AppFactory.js"></script>
+
+	<!--<link rel="stylesheet" href="lib/datatables/css/dataTables.bootstrap.css">-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Application de gestion des absences</title>
+</head>
+<body ng-controller="AuthCtrl">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header col-sm-12 text-center">
+				<hr>
+				<h3>Gestion d'absences</h3>
+				<hr>
+			</div>
+        </div>
+
+	</nav>
+	
+	<div class="row" >
+	<hr>
+	<hr>
+	<section class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xs-offset-0 col-sm-offset-3 col-md-offset-4 col-lg-offset-4">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-lock"></span>
+				Authentification
+			</div>
+			<div class="panel-body bordered-bottom">
+				<form action="" method="POST" role="form" name="auth">
+					<div class="form-group">
+						<label for="">Vous êtes</label>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<span class="fa fa-users"></span>
+							</span>
+							<select ng-init="user.type='authResponsable'" ng-model="user.type" required class="form-control" name="" >
+								<option value="authResponsable">Responsable</option>
+								<option value="authEnseignant">Enseignant</option>
+								<option value="authEtudiant">Etudiant</option>
+							</select>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<label for="">Nom d'utilisateur</label>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-user"></span>
+							</span>
+							<input type="text" ng-model="user.nomUtilisateur"  required class="form-control" id="" placeholder="BenMohamed"></div>
+					</div>
+					<div class="form-group">
+						<label for="">Mot de passe</label>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-lock"></span>
+							</span>
+							<input type="password" ng-model="user.motDePasse" required class="form-control" id="" placeholder="•••••••••"></div>
+					</div>
+					<div class="form-group">
+						<label for="">reCaptcha</label>
+						<center><img style="border:1px solid #23A86D;border-radius:6px;margin:4px 0;" ng-src="images/cap/cap{{idCaptcha}}.png" alt="captcha"></center>
+						<div class="input-group">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-lock"></span>
+							</span>
+							<input type="text" ng-model="userCaptcha" class="form-control" required id=""></div>
+					</div>
+					<div class="form-group">
+						<input type="checkbox" value="rempassword">Sauvgarder le mot de passe</div>
+					<button ng-click="submit()" class="btn btn-primary pull-right" ng-disabled="auth.$invalid">
+						Connexion
+						<span class="glyphicon glyphicon-log-in"></span>
+					</button>
+				</form>
+			</div>
+		</div>
+	</section>
+	<div w-message ></div>
+</div>
+
+
+
+<script type="text/javascript"	src="lib/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript"	src="lib/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript"  src="js/script.js"></script>
+
+
+
+</body>
+</html>

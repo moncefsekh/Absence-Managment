@@ -1,0 +1,18 @@
+
+[
+	{
+		"id": 1,
+		"code":"GL2S1",
+		"designation" : "2eme année GL Section 1"
+	},
+	{
+		"id": 2,
+		"code":"GL3S1",
+		"designation" : "3eme année GL Section 1"
+	},
+	{
+		"id": 3,
+		"code":"SITW2S1",
+		"designation" : "2eme année SITW Section 1"
+	}
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "id": 0,
+        "code_module": "CAJAVA",
+        "nom_module": "CAJAVA",
+        "semestre":"s1"
+    },
+    {
+        "id": 1,
+        "code_module": "BDA",
+        "nom_module": "BDA",
+        "semestre":"s1"
+    },
+    {
+        "id": 2,
+        "code_module": "GPL",
+        "nom_module": "GPL",
+        "semestre":"s1"
+    },
+    {
+        "id": 3,
+        "code_module": "TEC3",
+        "nom_module": "TEC3",
+        "semestre":"s1"
+    },
+    {
+        "id": 4,
+        "code_module": "ADC",
+        "nom_module": "ADC",
+        "semestre":"s1"
+    },
+    {
+        "id": 5,
+        "code_module": "TQL",
+        "nom_module": "TQL",
+        "semestre":"s1"
+    },
+    {
+        "id": 6,
+        "code_module": "MGCL",
+        "nom_module": "MGCL",
+        "semestre":"s2"
+    },
+    {
+        "id": 7,
+        "code_module": "IHM",
+        "nom_module": "IHM",
+        "semestre":"s2"
+    },
+    {
+        "id": 8,
+        "code_module": "AJEL",
+        "nom_module": "AJEL",
+        "semestre":"s2"
+    }
+]

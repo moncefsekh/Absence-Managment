@@ -1,0 +1,33 @@
+[
+	{
+		"id":1,
+		"code":"TQL_TD",
+		"groupeCode": "G2",
+		"designation" : "TD - TQL"
+	},
+	{
+		"id":2,
+		"code":"GPL_TP",
+		"groupeCode": "G2",
+		"designation" : "TP - GPL"
+	},
+	{
+		"id": 3,
+		"code": "POOJ_TD",
+		"groupeCode": "G1",
+		"designation" : "TD - POOJ"
+		
+	},
+	{
+		"id":5,
+		"code":"ORACLE2_TP",
+		"groupeCode": "G1",
+		"designation" : "TP - ORACLE 2"
+	},
+	{
+		"id":4,
+		"code":"PS_TD",
+		"groupeCode": "G3",
+		"designation" : "TD - PS"
+	}
+]

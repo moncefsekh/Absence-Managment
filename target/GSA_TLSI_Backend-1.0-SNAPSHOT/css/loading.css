@@ -1,0 +1,24 @@
+.loading{
+  width: 128px;
+  height: 128px;
+  top: 40%; 
+  position: absolute;
+}
+.loading.primary{
+ background:url('../images/loader.gif');
+}
+.loading.default{
+ background:url('../images/loader-1.gif');
+}
+.loading-sm{
+   zoom: 0.25;
+  left:48%;
+   
+}
+.loading-md{
+  zoom: 0.5;
+  left:47%; 
+}
+.loading-lg{
+  left:45%; 
+}

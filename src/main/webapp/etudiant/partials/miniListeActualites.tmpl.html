@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+	<div class="panel-heading bordered-radius">
+		<span class="glyphicon glyphicon-calendar"></span>
+		{{titreListeMini}}
+		<button class="btn btn-sm btn-primary pull-right" data-toggle="tooltip" title="Paramètres"><span class="glyphicon glyphicon-cog"></span></button>
+	</div>
+</div>
+<div class="list-group">
+	<a ng-repeat="act in actualitesSemaine" href="#" class="list-group-item" ng-class="{'panel-danger': act.present}">
+		<h4 class="list-group-item-heading">
+			{{act.actualites.code_module}} {{act.actualites.type}}
+			<label class="label label-primary pull-right" ng-class="{'label-warning': act.actualites.date_changement}">
+				{{act.actualites.heure_changement ? act.actualites.heure_changement : act.actualites.heure_seance}}
+			</label>
+			<label class="label label-primary pull-right" ng-class="{'label-warning': act.actualites.date_changement}" >
+				18-05
+			</label>
+		</h4>		
+		<p class="list-group-item-text">{{act.titre}}</p>
+	</a>
+</div>
+<div class="well message bordered-bottom" ng-show="(actualites).length==0">
+ 		<i class="fa fa-info-circle"></i>
+ 		<p>Aucune actualité pour le module {{selectedModuleCode}} {{listeVide}}</p>
+ 	</div>

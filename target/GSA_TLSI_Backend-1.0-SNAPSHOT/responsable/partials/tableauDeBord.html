@@ -1,0 +1,61 @@
+<!-- Widgets  -->
+<div widget w-titre="{{getSpecialiteJour}}" 
+			w-description="Le nombre des absences du jour"
+			w-icon = "users"
+			w-info ="{{nombreAbsencesJour}}"
+			class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<a class="dropdown-toggle ">
+				<i class="fa fa-cog"></i>
+			</a>
+			<ul class="dropdown-menu">
+				<li ng-repeat="spe in $root.getSpecialites">
+					<a ng-click="getNombreAbsencesJour(spe.code_specialite)"> <i class="fa fa-circle"></i>
+						{{spe.code_specialite}}
+					</a>
+				</li>
+			</ul>
+</div>
+<div widget  w-titre="{{getSpecialitePourcentage}}" 
+			w-description="Le pourcentage des étudiants abcentes"
+			w-icon = "bar-chart-o"
+			w-info ="{{pourcentageAbsences}}"
+			w-cur="%"
+			class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<a class="dropdown-toggle">
+				<i class="fa fa-cog"></i>
+			</a>
+			<ul class="dropdown-menu">
+				<li  ng-repeat="spe in $root.getSpecialites">
+					<a ng-click="getPourcentageAbsences(spe.code_specialite)"> <i class="fa fa-circle"></i>
+						{{spe.code_specialite}}
+					</a>
+				</li>
+			</ul>
+</div>
+<div widget w-titre="{{getSpecialiteEnseignants}}" 
+			w-description="Le nombre total des enseignants"
+			w-icon = "bar-chart-o"
+			w-info ="{{nombreEnseingant}}"
+			class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+			<a class="dropdown-toggle ">
+				<i class="fa fa-cog"></i>
+			</a>
+			<ul class="dropdown-menu">
+				<li  ng-repeat="spe in $root.getSpecialites">
+					<a ng-click="getNombreEnseingant(spe.code_specialite)"> <i class="fa fa-circle"></i>
+						{{spe.code_specialite}}
+					</a>
+				</li>
+			</ul>
+</div>
+
+<!--  Simple stat -->
+
+<section simple-stat class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+</section>
+
+
+<!-- Les activités récentes -->
+<section activites  class = "col-xs-12 col-sm-12 col-md-4 col-lg-4" 
+		 			titre-liste = "Les activités récentes">
+</section>

@@ -1,0 +1,139 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="pull-left">
+					<span class="glyphicon glyphicon-list"></span>
+					La liste des modules
+				</h4>
+				<div class="btn-group btn-group-sm pull-right">
+					<button ng-click="openModule('Modifier')" class="btn btn-default" ng-disabled="!selectedModule">
+						Modifier <i class="fa fa-pencil"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- modal -->
+	   <script type="text/ng-template" id="module.form.html">
+	        <div class="modal-header">
+	            <h4 class="modal-title">{{typeModuleModal}} module</h4>
+	        </div>
+	        <div class="modal-body">
+					<div class="col-md-12">
+						<p>Les champs indiqués par (*) sont obligatoires.</p>		
+						<form class="form-horizontal" role="form" name="fmod">
+							<div class="form-group" 
+							ng-class="{'has-success':fmod.cm.$dirty && fmod.cm.$valid,
+										'has-error':fmod.cm.$dirty && fmod.cm.$invalid}">
+								<label for="" class="col-sm-4 control-label">Code module (*)</label>
+								<div class="col-sm-8" ng-class="{'input-group':fmod.cm.$dirty}">
+									<input type="text" required ng-minlength="2" ng-pattern='/[A-Za-z]/' ng-maxlength="16" ng-model="getModule.code_module" class="form-control" name="cm" placeholder="POOJ">
+									<span class="input-group-addon" ng-if="fmod.cm.$dirty">
+										<span class="glyphicon glyphicon-ok" ng-show="fmod.cm.$valid"></span>
+										<span class="glyphicon glyphicon-remove" ng-show="fmod.cm.$invalid"></span>
+									</span>
+								</div>
+							</div>
+
+							<div class="form-group" 
+							ng-class="{'has-success':fmod.nm.$dirty && fmod.nm.$valid,
+										'has-error':fmod.nm.$dirty && fmod.nm.$invalid}">
+								<label for="" class="col-sm-4 control-label">Nom module (*)</label>
+								<div class="col-sm-8" ng-class="{'input-group':fmod.nm.$dirty}">
+									<input type="text" required ng-minlength="4" ng-maxlength="64" ng-pattern='/[A-Za-z]/' ng-model="getModule.nom_module" class="form-control" name="nm" id="" placeholder="Programmation Orientée Objet JAVA">
+									<span class="input-group-addon" ng-if="fmod.nm.$dirty">
+										<span class="glyphicon glyphicon-ok" ng-show="fmod.nm.$valid"></span>
+										<span class="glyphicon glyphicon-remove" ng-show="fmod.nm.$invalid"></span>
+									</span>
+								</div>
+							</div>
+
+							<div class="form-group" 
+							ng-class="{'has-success':fmod.crm.$dirty && fmod.crm.$valid,
+										'has-error':fmod.crm.$dirty && fmod.crm.$invalid}">
+								<label for="" class="col-sm-4 control-label">Crédit (*)</label>
+								<div class="col-sm-8" ng-class="{'input-group':fmod.crm.$dirty}">
+									<input type="number" required min="1" max="30" ng-model="getModule.nbrCredit" class="form-control" name="crm" placeholder="6">
+									<span class="input-group-addon" ng-if="fmod.crm.$dirty">
+										<span class="glyphicon glyphicon-ok" ng-show="fmod.crm.$valid"></span>
+										<span class="glyphicon glyphicon-remove" ng-show="fmod.crm.$invalid"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group"
+								ng-class="{'has-success':fmod.sem.$dirty || getModule.semestre,
+										'has-error':fmod.sem.$dirty }">
+								<label for="" class="col-sm-4 control-label">Semestre (*)</label>
+								<div class="col-sm-8">
+									<div class="btn-group">
+										<label class="btn btn-default" required name="sem" ng-model="getModule.semestre" btn-radio="'S1'">S1</label>
+										<label class="btn btn-default" ng-model="getModule.semestre" btn-radio="'S2'">S2</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group"
+								ng-class="{'has-success':fmod.ann.$dirty || getModule.annee,
+										'has-error':fmod.ann.$dirty}">
+								<label for="" class="col-sm-4 control-label">Année (*)</label>
+								<div class="col-sm-8">
+									<div class="btn-group">
+										<label ng-repeat="an in annees |filter:specialite" required name="ann" class="btn btn-default" ng-click="getModule.idSpecialite = an.specialite.id_Specialite" ng-model="getModule.annee" btn-radio="'{{an.specialite.annee}}'" checked>{{an.specialite.code_specialite}} - {{an.specialite.annee}}</label>
+									</div>
+								</div>
+							</div>
+							
+						</form>
+					</div>
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-primary" ng-disabled="fmod.$invalid" ng-click="submit(getModule)">{{typeModuleModal}}</button>
+	            <button class="btn btn-default" ng-click="cancel()">Annuler</button>
+	        </div>
+    	</script>
+    <!-- end modal -->
+
+	<div class="panel-body">
+		<table class="table table-hover"> 
+			<thead>
+				<tr>
+					<th>
+						<h5>Code</h5>
+					</th>
+					<th>
+						<h5>Module</h5>
+					</th>
+					<th>
+						<h5>Année</h5>
+					</th>
+					<th>
+						<h5>Semestre</h5>
+					</th>
+					<th>
+						<h5>Coefficient</h5>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="module in modules" ng-click="selectModule($event,module.module.id_Module)">
+					<td>{{module.module.code_module}}</td>
+					<td>{{module.module.nom_module}}</td>
+					<td>{{module.module.annee}}</td>
+					<td>{{module.module.semestre}}</td>
+					<td>{{module.module.nbrCredit}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<div class="panel-footer">
+		Le nombre des module par année
+		<div class="pull-right">
+			<span class="label label-default">{{nombreModulesParAnnee('L2')}}</span> L2 &nbsp;&nbsp;
+			<span class="label label-warning">{{nombreModulesParAnnee('L3')}}</span> L3 &nbsp;&nbsp;
+			<span class="label label-info">{{nombreModulesParAnnee('M1')}}</span> M1 &nbsp;&nbsp;
+			<span class="label label-primary">{{nombreModulesParAnnee('M2')}}</span> M2 &nbsp;&nbsp;
+		</div>
+	</div>
+</div>

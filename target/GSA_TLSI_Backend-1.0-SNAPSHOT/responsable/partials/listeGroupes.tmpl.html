@@ -1,0 +1,112 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="pull-left">
+					<span class="glyphicon glyphicon-list"></span>
+					La liste des groupes
+				</h4>
+				<div class="btn-group btn-group-sm pull-right hide-print">
+					<button ng-click="openGroupe('Modifier')" class="btn btn-default" ng-disabled="!selectedGroupe">
+						Modifier <i class="fa fa-pencil"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal -->
+	   <script type="text/ng-template" id="groupe.form.html">
+	        <div class="modal-header">
+	            <h4 class="modal-title">{{typeGroupeModal}} groupe</h4>
+	        </div>
+	        <div class="modal-body">
+					<div class="col-md-12">
+						<p>Les champs indiqués par (*) sont obligatoires.</p>		
+						<form class="form-horizontal" role="form" name="fgr">
+							<div class="form-group" 
+							ng-class="{'has-success':fgr.cg.$dirty && fgr.cg.$valid,
+										'has-error':fgr.cg.$dirty && fgr.cg.$invalid}">
+								<label for="" class="col-sm-4 control-label">Code groupe (*)</label>
+								<div class="col-sm-8" ng-class="{'input-group':fgr.cg.$dirty}">
+									<input type="text" required ng-minlength="2" ng-pattern='/[A-Za-z]/' ng-maxlength="16" ng-model="getGroupe.code_groupe" name="cg" class="form-control" placeholder="G1">
+									<span class="input-group-addon" ng-if="fgr.cg.$dirty">
+										<span class="glyphicon glyphicon-ok" ng-show="fgr.cg.$valid"></span>
+										<span class="glyphicon glyphicon-remove" ng-show="fgr.cg.$invalid"></span>
+									</span>
+								</div>
+							</div>
+
+							<div class="form-group"  ng-class="{'has-success':fgr.ng.$dirty && fgr.ng.$valid,
+										'has-error':fgr.ng.$dirty && fgr.ng.$invalid}">
+								<label for="" class="col-sm-4 control-label">Nom groupe (*)</label>
+								<div class="col-sm-8" ng-class="{'input-group':fgr.ng.$dirty}">
+									<input type="text" required ng-minlength="4" ng-pattern='/[A-Za-z]/' ng-maxlength="16" name="ng" ng-model="getGroupe.nom_groupe" class="form-control" placeholder="Groupe 1">
+									<span class="input-group-addon" ng-if="fgr.ng.$dirty">
+										<span class="glyphicon glyphicon-ok" ng-show="fgr.ng.$valid"></span>
+										<span class="glyphicon glyphicon-remove" ng-show="fgr.ng.$invalid"></span>
+									</span>
+								</div>
+							</div>
+							<div class="form-group"
+								ng-class="{'has-success':fgr.ann.$dirty || getGroupe.annee,
+										'has-error':fgr.ann.$dirty}">
+								<label for="" class="col-sm-4 control-label">Année (*)</label>
+								<div class="col-sm-8">
+									<div class="btn-group">
+										<label ng-repeat="an in annees |filter:specialite" name="ann" required class="btn btn-default" ng-click="getGroupe.idSection=null" ng-model="getGroupe.annee" btn-radio="'{{an.specialite.annee}}'" >{{an.specialite.code_specialite}} - {{an.specialite.annee}}</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group"
+								ng-class="{'has-success':fgr.sec.$dirty || getGroupe.idSection,
+										'has-error':fgr.sec.$dirty}">
+								<label for="" class="col-sm-4 control-label">Section (*)</label>
+								<div class="col-sm-8">
+									<div class="btn-group">
+										<label class="btn btn-default" name="sec" required ng-repeat="sec in sections" ng-if="sec.section.annne == getGroupe.annee" ng-model="getGroupe.idSection" btn-radio="{{sec.section.idSection}}">{{sec.section.nomsection}}</label>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-primary" ng-disabled="fgr.$invalid" ng-click="submit(getGroupe)">{{typeGroupeModal}}</button>
+	            <button class="btn btn-default" ng-click="cancel()">Annuler</button>
+	        </div>
+    	</script>
+    <!-- end modal -->
+	<div class="panel-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>
+						<h5>Code</h5>
+					</th>
+					<th>
+						<h5>Groupes</h5>
+					</th>
+					<th>
+						<h5>Années</h5>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="groupe in groupes" ng-click="selectGroupe($event,groupe.groupe.id_Groupe)">
+					<td>{{groupe.groupe.code_groupe}}</td>
+					<td>{{groupe.groupe.nom_groupe}}</td>
+					<td>{{groupe.groupe.annee}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<div class="panel-footer">
+		<div>
+			<span class="label label-default">{{nombreGroupesParAnnee('L2')}}</span> L2 &nbsp;&nbsp;
+			<span class="label label-warning">{{nombreGroupesParAnnee('L3')}}</span> L3 &nbsp;&nbsp;
+			<span class="label label-info">{{nombreGroupesParAnnee('M1')}}</span> M1 &nbsp;&nbsp;
+			<span class="label label-primary">{{nombreGroupesParAnnee('M2')}}</span> M2 &nbsp;&nbsp;
+		</div>
+	</div>
+</div>

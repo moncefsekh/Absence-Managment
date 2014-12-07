@@ -1,0 +1,105 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="pull-left">
+					<span class="glyphicon glyphicon-list"></span>
+					La liste des section
+				</h4>
+				<div class="btn-group btn-group-sm pull-right hide-print">
+					<button ng-click="openSection('Modifier')" class="btn btn-default" ng-disabled="!selectedSection">
+						Modifier <i class="fa fa-pencil"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- modal -->
+	   <script type="text/ng-template" id="section.form.html">
+	        <div class="modal-header">
+	            <h4 class="modal-title">{{typeSectionModal}} section</h4>
+	        </div>
+	        <div class="modal-body">
+					<div class="col-md-12">
+						<p>Les champs indiqués par (*) sont obligatoires.</p>		
+						<form class="form-horizontal" name="fsec" role="form">
+							<div class="form-group" 
+							ng-class="{'has-success':fsec.cs.$dirty && fsec.cs.$valid,
+										'has-error':fsec.cs.$dirty && fsec.cs.$invalid}">
+								<label for="" class="col-sm-4 control-label">Code section (*)</label>
+								<div class="col-sm-8" ng-class="{'input-group':fsec.cs.$dirty}">
+									<input type="text" ng-pattern='/[A-Za-z]/' name="cs" required ng-minlength="2" ng-maxlength="16" ng-model="getSection.codeSection" class="form-control"  placeholder="Sec1">
+									<span class="input-group-addon" ng-if="fsec.cs.$dirty">
+										<span class="glyphicon glyphicon-ok" ng-show="fsec.cs.$valid"></span>
+										<span class="glyphicon glyphicon-remove" ng-show="fsec.cs.$invalid"></span>
+									</span>
+								</div>
+							</div>
+
+							<div class="form-group" 
+							ng-class="{'has-success':fsec.ns.$dirty && fsec.ns.$valid,
+										'has-error':fsec.ns.$dirty && fsec.ns.$invalid}">
+								<label for="" class="col-sm-4 control-label">Nom section (*)</label>
+								<div class="col-sm-8" ng-class="{'input-group':fsec.ns.$dirty}">
+									<input type="text" ng-pattern='/[A-Za-z]/' name="ns" required ng-minlength="4" ng-maxlength="16" ng-model="getSection.nomsection" class="form-control" id="" placeholder="Section 1">
+									<span class="input-group-addon" ng-if="fsec.ns.$dirty">
+										<span class="glyphicon glyphicon-ok" ng-show="fsec.ns.$valid"></span>
+										<span class="glyphicon glyphicon-remove" ng-show="fsec.ns.$invalid"></span>
+									</span>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-success':fsec.ann.$dirty || getSection.annne,
+										'has-error':fsec.ann.$dirty}">
+								<label for="" class="col-sm-4 control-label">Année (*)</label>
+								<div class="col-sm-8">
+									<div class="btn-group">
+										<label ng-repeat="an in annees |filter:specialite" name="ann" required class="btn btn-default" ng-click="getSection.idSpecialite = an.specialite.id_Specialite" ng-model="getSection.annne" btn-radio="'{{an.specialite.annee}}'" >{{an.specialite.code_specialite}} - {{an.specialite.annee}}</label>
+									</div>
+								</div>
+							</div>
+							
+						</form>
+					</div>
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-primary" ng-disabled="fsec.$invalid" ng-click="submit(getSection)">{{typeSectionModal}}</button>
+	            <button class="btn btn-default" ng-click="cancel()">Annuler</button>
+	        </div>
+    	</script>
+    <!-- end modal -->
+	<div class="panel-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>
+						<h5>Code</h5>
+					</th>
+					<th>
+						<h5>Sections</h5>
+					</th>
+					<th>
+						<h5>Années</h5>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="section in sections" ng-click="selectSection($event,section.section.idSection)">
+					<td>{{section.section.codeSection}}</td>
+					<td>{{section.section.nomsection}}</td>
+					<td>{{section.section.annne}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<div class="panel-footer">
+		<div>
+			<span class="label label-default">{{nombreSectionsParAnnee('L2')}}</span> L2 &nbsp;&nbsp;
+			<span class="label label-warning">{{nombreSectionsParAnnee('L3')}}</span> L3 &nbsp;&nbsp;
+			<span class="label label-info">{{nombreSectionsParAnnee('M1')}}</span> M1 &nbsp;&nbsp;
+			<span class="label label-primary">{{nombreSectionsParAnnee('M2')}}</span> M2 &nbsp;&nbsp;
+		</div>
+	</div>
+</div>
