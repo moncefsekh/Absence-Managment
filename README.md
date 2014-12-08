@@ -11,5 +11,5 @@ Absence-Managment software, manage student's absences in University
 
 
 ##### Copyright (C) 2013-2014
-		 LIRE Laboratory,
+		 LIRE Laboratory
 		 University Abd Hamid Mehri, Algeria.
