@@ -1,4 +1,4 @@
-Absence-Managment
+Absence-Management
 =================
 
 Absence-Managment Software, manages class absences in the University's Computer Science Departement.
