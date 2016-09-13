@@ -1,7 +1,7 @@
 Absence-Managment
 =================
 
-Absence-Managment software, manage student's absences in University
+Absence-Managment Software, manages class absences in the University's Computer Science Departement.
 
 ### Authors           
 		 SAIDI Nour El Islam <bestogl2gmail.com>
@@ -9,7 +9,15 @@ Absence-Managment software, manage student's absences in University
 		 BENTERKI Med Tayeb  <benterki.tayeb@gmail.com>
 		 SEKHSOUKH Moncef    <moncefsekh@gmail.com>
 
-
+#### Contents
+                 Web Application
+                 Desktop Application 
+                 Mobile Application
+                 
+#### Technologies
+                 Web services , Restful , AngularJS
+                 J2EE , Java 
+                 Android 
+                 
 ##### Copyright (C) 2013-2014
-		 LIRE Laboratory
-		 University Abd Hamid Mehri, Algeria.
+		 University Constantine 2 Abdel Hamid Mehri, Algeria.
